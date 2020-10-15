@@ -8,17 +8,17 @@ RETURNS INTEGER
 LANGUAGE plpgsql
 AS $$
 DECLARE
-    previousNumber INTEGER = 1;
-    number INTEGER = 1;
-    iteration INTEGER = 1;
+    previousNumber INTEGER := 1;
+    number INTEGER := 1;
+    iteration INTEGER := 1;
 BEGIN
-    result = 1;
+    result := 1;
     ASSERT n > 0, 'Illegal Argument Error';
     WHILE iteration < n LOOP
-        previousNumber = number;
-        number = result;
-        result = previousNumber + number;
-        iteration = iteration + 1;
+        previousNumber := number;
+        number := result;
+        result := previousNumber + number;
+        iteration := iteration + 1;
     END LOOP;
 END $$;
 
@@ -30,7 +30,7 @@ DECLARE
     fib INTEGER;
 BEGIN
     FOR iteration IN 1..15 LOOP
-        fib = fibonacci_number(iteration);
+        fib := fibonacci_number(iteration);
         RAISE NOTICE '%', fib;
     END LOOP;
 END $$;
